@@ -1,0 +1,69 @@
+/* .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+}
+.span-col-6{grid-column: span 6 / auto;}
+
+.span-col-4{grid-column: span 4 / auto;}
+
+.span-col-2{grid-column: span 2 / auto;}
+
+.span-col-3{grid-column: span 3 / auto;} */
+
+/* .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+} */
+
+/* .center-right {
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    text-align: right;
+} */
+
+body {
+    font-family: "Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif";
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-gap: 0;
+    grid-template-areas: 
+        "header"
+        "content";
+    grid-template-rows: 100px auto;
+}
+
+.banner {
+    grid-area: header;
+    background-color: #0078d4;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.centered-content {
+    text-align: center;
+    grid-area: content;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
+
+#status {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+    table-layout: fixed;
+}

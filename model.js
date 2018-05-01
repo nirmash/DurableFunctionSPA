@@ -1,9 +1,12 @@
 var checkStatusURI = "";
 var DurableOutput = null;
 var handle = null;
+var diabled = false;
 
 function MapReduceIt() {
     var EndPointUri = $("#endpoint").val();
+    $("#endpoint").attr("disabled", "disabled");
+    $("#ExecuteDurable").attr("disabled", "disabled");
 
   $.post(EndPointUri, function (data) {
     checkStatusURI = data.statusQueryGetUri+"&showHistory=true";
@@ -26,14 +29,27 @@ function DurableListen() {
 }
 
 function RenderTable(curStatus){
-    var HtmlStr = "<table>";
-    for(var key in curStatus){
-        HtmlStr+="<tr><td>";
-        HtmlStr+=key+"</td><td>";   
-        HtmlStr+=curStatus[key]+"</td></tr>";
+    if (curStatus !== null ) {
+        if (curStatus["ExecutionStarted:ScanUrls"] === 1) {
+            $("#callFunction").html('<i class="fas fa-check-circle"></i>')
+        } 
+
+        if (curStatus["TaskCompleted:GetUriList"] === 1) {
+            $("#getUrlListStatus").html('<i class="fas fa-check-circle"></i>')
+        }
+
+        if (curStatus["TaskScheduled:undefined"]) {
+            $("#scanUrlsScheduled").html(curStatus["TaskScheduled:undefined"])
+        }
+
+        if (curStatus["TaskCompleted:ScanUrl"]) {
+            $("#scanUrlsCompleted").html(curStatus["TaskCompleted:ScanUrl"])
+        }
+
+        if (curStatus["ExecutionCompleted:Completed"] === 1) {
+            $("#scanUrlsScheduled").html(0);
+        }
     }
-    HtmlStr += "</table>";
-    $("#newtbl").html(HtmlStr);
 }
 
 function RenderHeader(data){

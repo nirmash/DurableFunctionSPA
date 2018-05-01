@@ -1,8 +1,9 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <script src="model.js" type="text/javascript"></script>
         <style type="text/css">
             .red-text{animation:none;color: blue;font-weight: bold}
@@ -32,14 +33,24 @@
                     <button id="ExecuteDurable" onclick="MapReduceIt();">Go!</button>
                 </span>
                 <table id="status" class="ms-font-l">
-                    <tr><td>Runtime Status:</td><td>Input:</td><td>Output:</td></tr>
-                    <tr><td id="runtimeStatus"></td><td id="input"></td><td id="output"></td></tr>
-                    <tr></tr>
+                    <thead>
+                        <tr><th>Runtime Status</th><th>Input</th><th>Output</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td id="runtimeStatus">Not Started</td><td id="input"></td><td id="output"></td></tr>
+                    </tbody>
                 </table>
-            </div>
-            
-            <div id="newtbl">
-
+                <table id="results" class="ms-font-l">
+                    <thead>
+                        <tr><th>Task</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Start Orchestrator</td><td id="callFunction"><i class="fas fa-ellipsis-h"></i></td></tr>
+                        <tr><td>Get URL List</td><td id="getUrlListStatus"><i class="fas fa-ellipsis-h"></i></td></tr>
+                        <tr><td>URLs scheduled</td><td id="scanUrlsScheduled">0</td></tr>
+                        <tr><td>URLs completed</td><td id="scanUrlsCompleted">0</td></tr>
+                    </tbody>
+                </table>
             </div>
        </div>
     </body>

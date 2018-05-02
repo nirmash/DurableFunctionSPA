@@ -2,6 +2,7 @@ var checkStatusURI = "";
 var DurableOutput = null;
 var handle = null;
 var diabled = false;
+var keys;
 
 function MapReduceIt() {
     var EndPointUri = $("#endpoint").val();
@@ -30,12 +31,32 @@ function DurableListen() {
 
 function RenderTable(curStatus){
     if (curStatus !== null ) {
+
+        keys = Object.keys(curStatus);
+        
+        if (keys[0]) {
+            $("#task0").html(keys[0])
+        }
+        if (keys[1]) {
+            $("#task1").html(keys[1])
+        }
+        if (keys[2]) {
+            $("#task2").html(keys[2])
+        }
+        if (keys[3]) {
+            $("#task3").html(keys[3])
+        }
+
         if (curStatus["ExecutionStarted:ScanUrls"] === 1) {
             $("#callFunction").html('<i class="fas fa-check-circle"></i>')
-        } 
+        } else {
+            $("#callFunction").html('<i class="fas fa-ellipsis-h"></i>')
+        }
 
         if (curStatus["TaskCompleted:GetUriList"] === 1) {
             $("#getUrlListStatus").html('<i class="fas fa-check-circle"></i>')
+        } else {
+            $("#getUrlListStatus").html('<i class="fas fa-ellipsis-h"></i>')
         }
 
         if (curStatus["TaskScheduled:undefined"]) {
@@ -47,7 +68,7 @@ function RenderTable(curStatus){
         }
 
         if (curStatus["ExecutionCompleted:Completed"] === 1) {
-            $("#scanUrlsScheduled").html(0);
+            $("#scanUrlsScheduled").html('<i class="fas fa-check-circle"></i>');
         }
     }
 }

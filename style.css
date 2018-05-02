@@ -58,3 +58,7 @@ body {
 #getUrlListStatus > .fa-check-circle {
     color: green;
 }
+
+#scanUrlsScheduled > .fa-check-circle {
+    color: green;
+}
